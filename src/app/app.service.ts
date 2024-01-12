@@ -11,6 +11,7 @@ personObject: Person[]=[
   {nom:'Bel Haj Fraj', prenom:'Jassem', niv:'Niveau 1'},
   {nom:'Bel Haj Fraj', prenom:'Fares', niv:'Niveau 3'}
 ];
+
   constructor() { }
 ajouterPerson(newperson: Person){
   this.personObject.push(newperson);
@@ -23,5 +24,6 @@ supprimerPerson(i: number): void{
 filterPersonByNiv( niveau:Level) : Person[]{
   
 return this.personObject.filter(person => person.niv === niveau)
+
 }
 }

@@ -41,12 +41,12 @@
                     </td>
                     <td class="px-6 py-4">
                       {{ item.nivtask | uppercase }}
-                    </td> 
+                    </td>
                     <td class="px-6 py-4">
                       <button
-                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" 
-                      (click)="affect()"
-                        >
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        (click)="affect(item.nivtask)"
+                      >
                         Affecter
                       </button>
                     </td>
@@ -60,7 +60,6 @@
     </div>
 
     <div class="w-1/2 border">
-      
       <div class="flex items-center justify-center">
         <div class="relative overflow-x-auto">
           <table
@@ -76,61 +75,58 @@
                 <th scope="col" class="px-6 py-3"></th>
               </tr>
             </thead>
-            
+
             <tbody>
               <!--<ng-container *ngFor="let person of personservice.personObject">
                 <ng-container *ngFor="let task of mytaskservice.taskObject">
                   <ng-container *ngIf="person.niv === task.nivtask && task.nivtask === pniv && task.status === 'A faire' && sameniv == true"> -->
-                    <ng-container *ngFor="let person of filterservice.personObject">
-                    <tr
-                      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              <ng-container *ngFor="let person of persNivTask">
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {{ person.nom }}
+                  </th>
+                  <td class="px-6 py-4">
+                    {{ person.prenom }}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{ person.niv }}
+                  </td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                      (click)="submit(tas, person)"
                     >
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                      >
-                        {{ person.nom }}
-                      </th>
-                      <td class="px-6 py-4">
-                        {{ person.prenom }}
-                      </td>
-                      <td class="px-6 py-4">
-                        {{ person.niv }}
-                      </td>
-                      <td class="px-6 py-4">
-                        <button
-                          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                        (click)="submit()"
-                          >
-                          Confirmer
-                        </button>
-                      </td>
-                    </tr>
-                                  
-                    
-                        
-                  </ng-container>
-                  <!-- </ng-container>
+                      Confirmer
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+              <!-- </ng-container>
                 </ng-container>
               </ng-container> -->
-              
             </tbody>
-            
           </table>
-          
-          
         </div>
       </div>
-    
     </div>
   </div>
 
-  <div class="flex-1 border" >
-    <div class="flex items-center justify-center h-screen" *ngIf=" sub === true">
-        
-            
-       <!-- {{person.nom| titlecase}} est affectée à {{nomm | titlecase}} {{prenomm | titlecase}}  </div> -->
-            
-        
+  <div class="flex-1 border">
+   <!--<ng-container *ngFor="let p of personservice.personObject">
+     <ng-container *ngFor="let t of mytaskservice.taskObject"> -->
+        <div
+          class="flex items-center justify-center h-screen"
+          *ngIf="sub === true"
+        >
+        {{ lastperson.nom| titlecase }}
+        {{ lastperson.prenom| titlecase }} va effectuer la tâche{{ lasttask.task | titlecase }} le {{lasttask.date}} 
+        </div>
+    <!--</ng-container>
+    </ng-container>-->
   </div>
 </div>
