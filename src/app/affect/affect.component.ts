@@ -26,27 +26,31 @@ export class AffectComponent {
   mytaskservice = inject(TaskService);
   personservice = inject(AppService);
 
-    sub!: boolean;
+  sub!: boolean;
   persNivTask: Person[] = [];
-  lastperson!: Person;
-  lasttask!: Task;
-  person:any;
-  tas! : any;
+  message: string = '';
+  task!: any;
+  person!: any;
+ 
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
   affect(nivtask: Level): void {
     this.persNivTask = this.personservice.filterPersonByNiv(nivtask);
+    this.person = this.persNivTask;
+    console.log(this.person);
+    
   }
 
   Compatible(personNiv: string, commonNiv: string): boolean {
     return personNiv === commonNiv;
+    
   }
  
-  submit(taskk: Task, pers: Person) {
+  submit() {
     this.sub = true;
-    this.person = this.personservice.personObject;
-    this.tas = this.mytaskservice.taskObject;
-    this.lastperson = pers;
-    this.lasttask = taskk;
+    
+    //this.task=this.mytaskservice.taskObject;
   }
 }

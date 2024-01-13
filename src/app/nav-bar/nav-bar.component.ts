@@ -10,4 +10,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class NavBarComponent {
 
+  showdropdown = false;
+
+
+  toggleDropdown(){
+    this.showdropdown = !this.showdropdown
+  }
 }
